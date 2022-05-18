@@ -1,0 +1,44 @@
+name:                hw3
+version:             0.1.0.0
+synopsis:            Synopsis for task 3
+description:         Task 3 for FP ITMO course
+
+homepage:            https://github.com/ST-1580/fp-homework/tree/master/hw3#readme
+license:             MIT
+license-file:        LICENSE
+author:              Yaroslav Kirsanov
+maintainer:          YarKirs@mail.ru
+copyright:           2022 Yaroslav Kirsanov
+
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 8.0.1
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     HW3.Action, HW3.Base, HW3.Evaluator, HW3.Parser, HW3.Pretty
+  ghc-options:         -Wall
+  build-depends:       base >=4.9 && <5, megaparsec, prettyprinter, prettyprinter-ansi-terminal,
+                       scientific, mtl, parser-combinators, text, containers, bytestring, zlib,
+                       serialise, directory, time, random 
+  other-modules:       Paths_hw3
+  default-language:    Haskell2010
+
+executable hi
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base >=4.9 && <5, hw3, haskeline, megaparsec, containers
+  other-modules:       Paths_hw3
+  default-language:    Haskell2010
+
+test-suite hi-test
+  type:                exitcode-stdio-1.0
+  main-is:             Spec.hs
+  other-modules:       Paths_hw3, Helper, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11
+  hs-source-dirs:      test
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base >=4.9 && <5, hw3, tasty, tasty-hunit
+  default-language:    Haskell2010
